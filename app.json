@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/design/design",
+    "pages/index/index",
+    "pages/about/about",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "DIY",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#ff740e",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/icon-home.png",
+        "selectedIconPath": "images/icon-home-full.png"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "我的",
+        "iconPath": "images/icon-about.png",
+        "selectedIconPath": "images/icon-about-full.png"
+      }
+    ]
+  }
+}
