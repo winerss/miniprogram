@@ -23,6 +23,23 @@
   position: relative;
   text-align: center;
 }
+.upload-wrapper{
+  position: absolute;
+  top: 50%;
+  margin-top: -100px;
+  left: 50%;
+  margin-left: -15%;
+  height: 200px;
+  width: 30%;
+  border: 1px solid #999;
+  overflow: hidden;
+}
+.upload-wrapper image{
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  max-height: 100%;
+}
 .container .type-group{
   position: absolute;
   bottom: 10px;
@@ -58,7 +75,7 @@
 .container .type-group .text-active{
   color: #07b4c4;
 }
-.container image{
+.container .banner{
   height: 340px;
   max-width: 90%;
   margin: 30px auto 0px;

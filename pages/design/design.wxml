@@ -4,7 +4,12 @@
     <button wx:for="{{direction}}" wx:key="index" bindtap="changeDirection" data-type="{{item.index===0?'f':'b'}}" data-id="{{item.index}}" class="{{item.index==directionIndex?'active':''}}" size='mini'>{{item.name}}</button>
   </view>
   <view class='container'>
-    <image style='background:{{curColor}}' style= src="{{img}}"></image>
+    <image class='banner' style='background:{{curColor}}' src="{{img}}"></image>
+    <view class='upload-wrapper'>
+      <block class="upload-img" wx:for="{{imageList}}" wx:key="item.index" wx:for-item="image">
+        <image src='{{image}}' data-src='{{image}}' bindtap='previewsImages'></image>
+      </block>
+    </view>
     <view class='type-group'>
       <view wx:for="{{types}}" wx:key="index" class="flex-item" bindtap="changeType" data-type='{{item.index}}'>
         <image class="{{item.index==typeIndex?'active':''}}" src='{{item.img}}'></image>
@@ -28,7 +33,7 @@
   </view>
 </view>
 <view class='tab-bar'>
-  <view class="flex-item">
+  <view class="flex-item" bindtap='chooseImg'>
     <image src='{{upload}}'></image>
     <text>上传图片</text>
   </view>

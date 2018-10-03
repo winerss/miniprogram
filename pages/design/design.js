@@ -64,7 +64,28 @@ Page({
       index: 4,
       name: '宝蓝',
       key: '#4169E1'
-    }]
+    }],
+    imageList:[]
+  },
+  chooseImg: function () {
+    var that = this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album','camera'],
+      success: function(res) {
+        that.setData({
+          imageList: res.tempFilePaths
+        })
+      },
+    })
+  },
+  previewImage: function (e){
+    var current = e.target.dataset.src;
+    wx.previewImage({
+      current: current,
+      urls: this.data.imageList,
+    })
   },
   changeDirection: function(e) {
     var direction = e.currentTarget.dataset.type
