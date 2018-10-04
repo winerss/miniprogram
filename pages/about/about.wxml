@@ -1,6 +1,2 @@
 <!--pages/about/about.wxml-->
-<view>
-  <view class='container'>
-    ABOUT
-  </view>
-</view>
+<text>pages/about/about.wxml</text>

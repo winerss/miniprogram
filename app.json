@@ -2,8 +2,8 @@
   "pages": [
     "pages/design/design",
     "pages/index/index",
-    "pages/about/about",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/about/about"
   ],
   "window": {
     "backgroundTextStyle": "light",

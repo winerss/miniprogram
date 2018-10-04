@@ -1,13 +1,152 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<!--pages/order.wxml-->
+<wxs module="moddle">
+  var getImage = function(index) {
+    switch (index) {
+      case 0:
+        return "正";
+      case 1:
+        return "反";
+      case 2:
+        return "左";
+      case 3:
+        return "右"
+    }
+  }
+  module.exports.getImage = getImage;
+</wxs>
+<view class="icons">
+  <image wx:for="{{images}}" class='icons_img' src='{{item.url}}?x-oss-process=image/resize,m_lfit,w_100' wx:key="index"></image>
+</view>
+<view class="cent">
+  <image catchtap='test' src="{{imgUrl[imgIndex].bgUrl+'?x-oss-process=image/resize,m_lfit,w_500'}}" class="image" wx:if="{{imgUrl.length}}"></image>
+  <view class='btns'>
+    <text wx:for="{{imgUrl}}" class='{{imgIndex===index?"active":null}}' data-index="{{index}}" wx:key="{{index}}" bindtap='changeImg'>{{item.desc}}</text>
   </view>
-  <view style='margin-top: 100px;text-align: center;'>
-    <navigator url="../design/design">开始DIY</navigator>
+  <view class="port" catchtap='test' style='width:{{imgUrl[imgIndex].areaWidth*500/imgUrl[imgIndex].width}}rpx;height:{{imgUrl[imgIndex].areaHeight/imgUrl[imgIndex].width*500}}rpx;left:{{imgUrl[imgIndex].left/imgUrl[imgIndex].width*500+125}}rpx;top:{{imgUrl[imgIndex].top/imgUrl[imgIndex].width*500}}rpx'>
+    <view wx:for="{{images}}" wx:key="{{index}}" class='box {{index==iconIndex?"active":""}}' style='transform:translateX({{(item.left+item.position.left)/p}}rpx) translateY({{(item.top+item.position.top)/p}}rpx) rotateZ({{actionIndex==index?item.rotate+rotate:item.rotate}}deg) scale({{actionIndex==index?item.scale*scale:item.scale}}); left:{{imgUrl[imgIndex].areaWidth*500/imgUrl[imgIndex].width/2-(item.dragize==1?75:25)}}rpx;top:{{imgUrl[imgIndex].areaHeight/imgUrl[imgIndex].width*500/2-(item.dragize===1?75:25)}}rpx'
+      data-index='{{index}}'>
+      <image class='boxImg {{item.dragize==1?"":"BADGE"}}' catchtouchstart='start' catchtouchend='end' catchtouchmove="move" data-index="{{index}}" src='{{item.url}}?x-oss-process=image/resize,m_lfit,w_100'></image>
+      <view class='moveclose' style='transform:scale({{1/(actionIndex==index?item.scale*scale:item.scale)}})' hidden='{{index!=iconIndex}}' catchtap='moveclose' catchtouchmove data-index="{{index}}"></view>
+      <view class='movescale' style='transform:scale({{1/(actionIndex==index?item.scale*scale:item.scale)}})' hidden='{{index!=iconIndex}}' data-dragize='{{item.dragize}}' catchtouchmove="scaleMove" catchtouchstart="scaleStart" catchtouchend='scaleEnd' data-index='{{index}}'></view>
+    </view>
+  </view>
+</view>
+<view class="footer">
+  <view wx:if='{{flag==="all"}}'>
+    <view class='icon clearfix'>
+      <view class="fl" bindtap='getsucaiList' data-info='sucai'>
+        <image src='https://lg-j2pfsko2-1257172761.cos.ap-shanghai.myqcloud.com/cixiu.png' mode="aspectFit"></image>
+        <text class="prop">素材</text>
+      </view>
+      <view class="fl" bindtap='getsucaiList' data-info='huizhang'>
+        <image src='https://lg-j2pfsko2-1257172761.cos.ap-shanghai.myqcloud.com/huizhang.png' mode="aspectFit"></image>
+        <text class="prop">徽章</text>
+      </view>
+      <view class="fl" bindtap='getsucaiList' data-info='lianming'>
+        <image src='https://lg-j2pfsko2-1257172761.cos.ap-shanghai.myqcloud.com/lianming.png' mode="aspectFit"></image>
+        <text class="prop">联名</text>
+      </view>
+      <view class="fl" bindtap='getsucaiList' data-info='fonts'>
+        <image src='https://lg-j2pfsko2-1257172761.cos.ap-shanghai.myqcloud.com/fonts.png' mode="aspectFit"></image>
+        <text class="prop">文字</text>
+      </view>
+      <view class="fl" bindtap='getsucaiList' data-info='shangchuan'>
+        <image src='https://lg-j2pfsko2-1257172761.cos.ap-shanghai.myqcloud.com/sucai.png' mode="aspectFit"></image>
+        <text class="prop">上传</text>
+      </view>
+    </view>
+    <view class='sure' bindtap='sure'>确定定制</view>
+  </view>
+  <view class='sucai props' wx:if='{{flag==="sucai" }}'>
+    <view class='top'>
+      <image class="img" src='https://lg-j2pfsko2-1257172761.cos.ap-shanghai.myqcloud.com/header-logo.png' mode="aspectFit"></image>
+      <text>印花</text>
+      <view bindtap='closetop' class="close fr"></view>
+    </view>
+    <scroll-view class='nav' scroll-x="{{true}}">
+      <view wx:for="{{sucaiList}}" class='navList {{sucaiListId===item.jointlyId?"active":""}}' wx:key="{{index}}" data-id="{{item.jointlyId}}" bindtap='getsucai' data-index="{{index}}">{{item.jointlyName}}</view>
+    </scroll-view>
+    <scroll-view class='list' scroll-left="{{scrollLeft}}" scroll-x="{{true}}" bindscrolltolower="load">
+      <view wx:for="{{sucai}}" class='navList' wx:key="{{index}}" data-id="{{item.jointlyId}}" data-url="{{item.imgUrl}}" data-index="{{index}}" bindtap='addImg' data-price="{{item.price}}" data-dragize='{{item.dragize}}'>
+        <image class="sucaiIcon" src='{{item.imgUrl}}?x-oss-process=image/resize,m_lfit,w_100'></image>
+        <text>{{item.materialName}}</text>
+      </view>
+    </scroll-view>
+  </view>
+  <view class='sucai props' wx:if='{{flag==="huizhang" }}'>
+    <view class='top'>
+      <image class="img" src='https://lg-j2pfsko2-1257172761.cos.ap-shanghai.myqcloud.com/header-logo.png' mode="aspectFit"></image>
+      <text>徽章</text>
+      <view bindtap='closetop' class="close fr"></view>
+    </view>
+    <scroll-view class='nav' scroll-x="{{true}}">
+      <view wx:for="{{sucaiList}}" class='navList {{sucaiListId===item.jointlyId?"active":""}}' wx:key="{{index}}" data-id="{{item.jointlyId}}" bindtap='getsucai' data-index="{{index}}">{{item.jointlyName}}</view>
+    </scroll-view>
+    <scroll-view class='list' scroll-left="{{scrollLeft}}" scroll-x="{{true}}" bindscrolltolower="load">
+      <view wx:for="{{sucai}}" class='navList' wx:key="{{index}}" data-id="{{item.jointlyId}}" data-index="{{index}}" data-url="{{item.imgUrl}}" bindtap='addImg' data-price="{{item.price}}" data-dragize='{{item.dragize}}'>
+        <image class="sucaiIcon" src='{{item.imgUrl}}?x-oss-process=image/resize,m_lfit,w_100'></image>
+        <text class='huizhang'>+{{item.price}}元</text>
+      </view>
+    </scroll-view>
+  </view>
+  <view class='sucai props' wx:if='{{flag==="lianming" }}'>
+    <view class='top'>
+      <image class="img" src='https://lg-j2pfsko2-1257172761.cos.ap-shanghai.myqcloud.com/header-logo.png' mode="aspectFit"></image>
+      <text>联名</text>
+      <view bindtap='closetop' class="close fr"></view>
+    </view>
+    <scroll-view class='nav' scroll-x="{{true}}">
+      <view wx:for="{{sucaiList}}" class='navList {{sucaiListId===item.jointlyId?"active":""}}' wx:key="{{index}}" data-id="{{item.jointlyId}}" bindtap='getsucai' data-index="{{index}}">{{item.jointlyName}}</view>
+    </scroll-view>
+    <scroll-view class='list' scroll-left="{{scrollLeft}}" scroll-x="{{true}}" bindscrolltolower="load">
+      <view wx:for="{{sucai}}" class='navList' wx:key="{{index}}" data-id="{{item.jointlyId}}" data-index="{{index}}" data-url="{{item.imgUrl}}" bindtap='addImg' data-price="{{item.price}}" data-dragize='{{item.dragize}}'>
+        <image class="sucaiIcon" src='{{item.imgUrl}}?x-oss-process=image/resize,m_lfit,w_100'></image>
+        <text>{{item.materialName}}</text>
+      </view>
+    </scroll-view>
+  </view>
+  <view class='fonts props' wx:if='{{flag==="fonts" }}'>
+    <view class='top'>
+      <image class="img" src='https://lg-j2pfsko2-1257172761.cos.ap-shanghai.myqcloud.com/header-logo.png' mode="aspectFit"></image>
+      <text>字体</text>
+      <view bindtap='closetop' class="close fr"></view>
+    </view>
+    <scroll-view class='nav' scroll-x="{{true}}">
+      <view class='navList active}}'>印花</view>
+    </scroll-view>
+    <scroll-view class='colorList' scroll-left="{{scrollLeft}}" scroll-x="{{true}}" bindscrolltolower="load">
+      <view wx:for="{{fonts.color}}" class='{{color===item?"active":""}}' wx:key="{{index}}" data-index="{{index}}" style='background:{{item}}' data-color="{{item}}" catchtap='colorChange'></view>
+    </scroll-view>
+    <scroll-view class='imgList' scroll-left="{{scrollLeft}}" scroll-x="{{true}}" bindscrolltolower="load">
+      <view wx:for="{{fonts.font}}" class='{{fontId===item.id?"active":""}}' wx:key="{{index}}" data-id="{{item.id}}" catchtap='fontChange'>
+        <image src='{{item.imgUrl}}' mode="aspectFit"></image>
+      </view>
+    </scroll-view>
+    <view class='fontStyle'>
+      <view catchtap='fontStyleChange' data-prop='bold' class='{{fontStyle.bold?"active":""}}'>粗体</view>
+      <view catchtap='fontStyleChange' data-prop='italic' class='italic {{fontStyle.italic?"active":""}}'>斜体</view>
+    </view>
+    <view class='form'>
+      <input placeholder="输入文字，最多10个字"></input>
+      <button size='mini'>添加</button>
+    </view>
+  </view>
+  <view class='shangchuan props' wx:if='{{flag==="shangchuan" }}'>
+    <view class='top'>
+      <image class="img" src='https://lg-j2pfsko2-1257172761.cos.ap-shanghai.myqcloud.com/header-logo.png' mode="aspectFit"></image>
+      <text>我的素材</text>
+      <view bindtap='closetop' class="close fr"></view>
+    </view>
+    <view class='content'>
+    <view class='left fl' catchtap='upLoadImg'>
+        <image src='https://lg-j2pfsko2-1257172761.cos.ap-shanghai.myqcloud.com/sucai.png'></image>
+        <text>上传素材</text>
+    </view>
+    <view class='right fl'>
+      <scroll-view class='nav' scroll-x="{{true}}">
+      <view class='navList active}}'>印花</view>
+    </scroll-view>
+    </view>
+    </view>
   </view>
 </view>

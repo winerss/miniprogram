@@ -1,21 +1,232 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.icons{
+  width: 570rpx;
+  height: 60rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 40rpx;
+  margin:20rpx auto;
+  padding: 0 10rpx; 
+  overflow: hidden;
+  white-space: nowrap;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+.icons_img{
+  height: 60rpx;
+  width: 60rpx;
+  margin: 0 10rpx;
+}
+.cent{
+  position: relative;
+}
+.port{
+  position: absolute;
+  overflow: hidden
+}
+.port .box{
+  position: absolute;
+  transform-origin: 50% 50%;
+}
+.port .box .boxImg{
+  width: 150rpx;
+  height:150rpx;
+  box-sizing: border-box;
+  display: block
+}
+.port .box .boxImg.BADGE{
+  width: 50rpx;
+  height:50rpx;
+}
+.port .box.active{
+  border: 1px dashed #f84 ;
+}
+.box .moveclose,.box .movescale{
+  width:40rpx;
+  height:40rpx;
+  position: absolute;
+}
+.box .moveclose{
+  bottom:-20rpx;
+  left:-20rpx;
+  background: url(https://l0vwp10g.qcloud.la/section-close.png) no-repeat center;
+  background-size: 40rpx;
+}
+.box .movescale{
+  bottom:-20rpx;
+  right:-20rpx;
+  background: url(https://l0vwp10g.qcloud.la/section-magnify.png) no-repeat center;
+  background-size: 40rpx;
+}
+.image{
+  width:500rpx;
+  height:667rpx;
+  display: block;
+  margin: 0 auto;
+}
+.btns{
+  width: 50rpx;
+  height: 200rpx;
+  position: absolute;
+  top:200rpx;
+  right:50rpx;
+}
+.btns text{
+  width: 30rpx;
+  height:50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 24rpx;
+  padding: 0 10rpx;
+  display: block;
+  border:1rpx solid #ccc;
+  border-radius: 5rpx;
+}
+.btns text.active{
+  background-color: yellow;
+}
+.footer{
+  width:100%;
+  position: fixed;
+  bottom:0;
+}
+.sure{
+  text-align: center;
+  height:100rpx;
+  line-height: 100rpx;
+  background-color: yellow;
+}
+.icon view{
+  width:100rpx;
+  text-align: center;
+  padding: 25rpx;
+  background-color: #fff;
+  border-top: 1rpx solid #eee;
+}
+.icon image{
+  width:50rpx;
+  height:50rpx;
+}
+.prop{
+  display: block;
+  font-size: 20rpx;
+}
+.props .top{
+  background-color: yellow;
+  text-align: center;
+  font-size: 40rpx;
+  padding: 20rpx;
+}
+.props .top .img{
+  width:40rpx;
+  height:40rpx;
+}
+.top .close{
+  width: 60rpx;
+  height:60rpx;
+  background: url("https://l0vwp10g.qcloud.la/footer-save.png") no-repeat center;
+  background-size: 30rpx;
+}
+.sucai .nav{
+  height:65rpx;
+  white-space:nowrap;
+  padding-bottom: 10rpx;
+  background: #fff;
+}
+.props .nav .navList{
+  font-size: 20rpx;
+  line-height: 20rpx;
+  padding: 0 30rpx;
+  padding-bottom: 15rpx;
+  display: inline-block
+}
+.props .nav .navList.active{
+  border-bottom: 5rpx solid yellow;
+}
+.list{
+  white-space:nowrap;
+  height:190rpx;
+}
+.list .navList{
+  display: inline-block;
+  padding: 20rpx;
+  font-size: 20rpx;
+  text-align: center
+}
+.sucaiIcon{
+  width: 100rpx;
+  height: 100rpx;
+  display: block;
+  margin: 10rpx auto;
+}
+.huizhang{
+  color:yellow;
+  display: block;
+  height: 30rpx;
+  border-radius: 15rpx;
+  background-color: #449;
+}
+.fonts .colorList,.fonts .imgList{
+  white-space:nowrap;
+}
+.fonts .colorList view{
+  width: 50rpx;
+  height:50rpx;
   border-radius: 50%;
+  display: inline-block;
+  margin: 20rpx 20rpx 0;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.fonts .colorList view.active,.fonts .imgList view.active{
+  border:5rpx solid yellow;
 }
-
-.usermotto {
-  margin-top: 200px;
+.fonts .imgList view{
+  width:100rpx;
+  height:50rpx;
+  display: inline-block;
+  margin:20rpx 20rpx 0;
+  border-radius: 10rpx
+}
+.fonts .imgList image{
+   width:100rpx;
+   height:50rpx
+}
+.fonts .fontStyle view{
+  display: inline-block;
+  padding:20rpx 30rpx;
+  color:#ccc;
+  font-size: 30rpx
+}
+.fonts .fontStyle view.active{
+  color:#333;
+}
+.fonts .fontStyle .italic{
+  font-style: italic
+}
+.fonts .form input{
+  margin-left: 20rpx;
+  display: inline-block;
+  width: 500rpx;
+  background: #ccc;
+  border-radius: 10rpx;
+  padding-left: 20rpx;
+  margin-right: 20rpx;
+}
+.input-placeholder{
+  font-size: 30rpx;
+}
+.shangchuan .content{
+  height:250rpx;
+}
+.shangchuan .content .left{
+  width:200rpx;
+  height:250rpx;
+  background: #f91;
+  text-align: center;
+  font-size: 30rpx;
+}
+.shangchuan .content .left image{
+  width:50rpx;
+  height:50rpx;
+  display: block;
+  margin: 80rpx auto 0;
+}
+.shangchuan .content .right{
+  width:550rpx;
+  height:250rpx;
 }

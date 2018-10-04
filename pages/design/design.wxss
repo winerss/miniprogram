@@ -1,18 +1,18 @@
 /* pages/about/about.wxss */
 .wrapper{
-  padding-bottom: 60px;
+  padding-bottom: 100rpx;
 }
 .header{
-  height: 30px;
+  height: 60rpx;
   text-align: center;
 }
 .header button{
-  margin: 3px 6px;
-  padding: 0 8px;
-  height: 24px;
-  line-height: 24px;
+  margin: 6rpx 12rpx;
+  padding: 0 16rpx;
+  height: 48rpx;
+  line-height: 48rpx;
   background: #fff;
-  font-size: 16px;
+  font-size: 24rpx;
   color: #333;
 }
 .header .active{
@@ -23,77 +23,100 @@
   position: relative;
   text-align: center;
 }
-.upload-wrapper{
+movable-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300rpx;
+  width: 300rpx;
+}
+movable-view image{
+  max-height: 100%;
+  max-width: 100%;
+}
+.operate{
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  top: 50%;
+  margin-top: 240rpx;
+  left: 50%;
+  margin-left: -120rpx;
+  width: 240rpx;
+  height: 50rpx;
+  background: #333;
+}
+.operate image{
+  margin: 10rpx 0;
+  width: 30rpx;
+  height: 30rpx;
+}
+movable-area{
   position: absolute;
   top: 50%;
-  margin-top: -100px;
+  margin-top: -240rpx;
   left: 50%;
-  margin-left: -15%;
-  height: 200px;
-  width: 30%;
-  border: 1px solid #999;
+  margin-left: -120rpx;
+  height: 480rpx;
+  width: 240rpx;
+  border: 1rpx solid #f5f5f5;
   overflow: hidden;
 }
-.upload-wrapper image{
-  margin: 0;
-  padding: 0;
-  max-width: 100%;
-  max-height: 100%;
-}
+
 .container .type-group{
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 20rpx;
+  left: 20rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .container .color-group{
   position: absolute;
-  bottom: 10px;
-  right: 20px;
+  bottom: 20rpx;
+  right: 40rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 10px;
+  font-size: 20rpx;
 }
 .container .color-group .flex-item{
   flex-shrink: 0;
   box-sizing: border-box;
-  width: 30px;
-  height: 30px;
+  width: 60rpx;
+  height: 60rpx;
   border-radius: 50%;
-  line-height: 30px;
-  margin-top: 2px;
+  line-height: 60rpx;
+  margin-top: 4rpx;
   background: #fff;
   color: #999;
 }
 .container .color-group .active{
-  border: 2px solid #07b4c4;
-  line-height: 26px;
+  border: 4rpx solid #07b4c4;
+  line-height: 52rpx;
 }
 .container .type-group .text-active{
   color: #07b4c4;
 }
 .container .banner{
-  height: 340px;
+  height: 680rpx;
   max-width: 90%;
-  margin: 30px auto 0px;
+  margin: 60rpx auto 0rpx;
 }
 .container .title{
   position: relative;
-  margin: 20px 30px;
+  margin: 40rpx 60rpx;
   color: #999;
-  border-bottom: 1px solid #ebebeb;
+  border-bottom: 1rpx solid #ebebeb;
 }
 .container .title p{
   position: absolute;
-  width: 80px;
+  width: 160rpx;
   background: #fff;
-  top: -6px;
+  top: -12rpx;
   left: 50%;
-  margin-left: -40px;
-  font-size: 14px;
+  margin-left: -80rpx;
+  font-size: 28rpx;
 }
 .type-group {
   display: flex;
@@ -102,17 +125,17 @@
 }
 .type-group .flex-item{
   display: flex;
-  height: 60px;
+  height: 120rpx;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .type-group .flex-item image{
-  height: 25px;
-  width: 25px;
+  height: 50rpx;
+  width: 50rpx;
   flex-shrink: 0;
-  margin: 0 6px;
-  padding: 5px;
+  margin: 0 12rpx;
+  padding: 10rpx;
   border-radius: 50%;
   background: #ccc;
 }
@@ -123,10 +146,10 @@
   color: #07b4c4;
 }
 .type-group .flex-item text{
-  width: 60px;
-  font-size: 10px;
+  width: 120rpx;
+  font-size: 20rpx;
   color: #999;
-  margin-top: 2px;
+  margin-top: 4rpx;
   text-align: center;
   overflow: hidden;
   text-overflow:ellipsis;
@@ -136,27 +159,27 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 50px;
+  height: 100rpx;
   display: flex;
   justify-content: space-around;
   flex-direction:row;
-  font-size: 12px;
+  font-size: 20rpx;
   background: #121622;
 }
 .tab-bar image{
-  height: 20px;
-  width: 20px;
+  height: 40rpx;
+  width: 40rpx;
 }
 .tab-bar .flex-item{
   display: flex;
-  height: 50px;
+  height: 100rpx;
   text-align: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .tab-bar .flex-item text{
-  width: 60px;
+  width: 120rpx;
   color: #999;
   overflow: hidden;
   text-overflow:ellipsis;

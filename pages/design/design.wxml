@@ -5,10 +5,20 @@
   </view>
   <view class='container'>
     <image class='banner' style='background:{{curColor}}' src="{{img}}"></image>
-    <view class='upload-wrapper'>
-      <block class="upload-img" wx:for="{{imageList}}" wx:key="item.index" wx:for-item="image">
-        <image src='{{image}}' data-src='{{image}}' bindtap='previewsImages'></image>
-      </block>
+    <movable-area scale-area>
+      <movable-view direction="all" bindchange="onChange" bindscale="onScale" scale scale-min='0.5' scale-max="1.5" scale-value="{{scale}}">
+        <block wx:for="{{imageList}}" wx:key="item.index" wx:for-item="image">
+          <image class='view' style="transform:rotate({{rotateVale}}deg);left:{{left}}px;top:{{top}}px;" src='{{image}}' data-src='{{image}}' bindtap='previewsImages'></image>
+        </block>
+      </movable-view>
+
+    </movable-area>
+    <view class='operate'>
+      <image class='remove' bindtap="tapremove" src='{{remove}}'></image>
+      <image class='add' bindtap="tapadd" src='{{add}}'></image>
+      <image class='min' bindtap="tapmin" src='{{min}}'></image>
+      <image class='rotate' bindtap="taprotate" src='{{rotate}}'></image>
+      <image class='ok' bindtap="tapok" src='{{ok}}'></image>
     </view>
     <view class='type-group'>
       <view wx:for="{{types}}" wx:key="index" class="flex-item" bindtap="changeType" data-type='{{item.index}}'>
