@@ -1,0 +1,168 @@
+/* pages/about/about.wxss */
+.wrapper{
+  padding-bottom: 100rpx;
+}
+.header{
+  height: 60rpx;
+  text-align: center;
+}
+.header button{
+  margin: 6rpx 12rpx;
+  padding: 0 16rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  background: #fff;
+  font-size: 24rpx;
+  color: #333;
+}
+.header .active{
+  color: #fff;
+  background: #07b4c4;
+}
+.container{
+  position: relative;
+  text-align: center;
+}
+.canvas0{
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  margin-left: -160px;
+  margin-bottom: 120rpx; 
+  height: 360px;
+  width: 320px;
+  background: #ccc;
+}
+.container .cropper{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -160px;
+  height: 360px;
+  width: 320px;
+  overflow: hidden;
+}
+.container .type-group{
+  position: absolute;
+  bottom: 20rpx;
+  left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container .color-group{
+  position: absolute;
+  bottom: 20rpx;
+  right: 40rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 20rpx;
+}
+.container .color-group .flex-item{
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  line-height: 60rpx;
+  margin-top: 4rpx;
+  background: #fff;
+  color: #999;
+}
+.container .color-group .active{
+  border: 4rpx solid #07b4c4;
+  line-height: 52rpx;
+}
+.container .type-group .text-active{
+  color: #07b4c4;
+}
+.container .banner{
+  display: block;
+  height: 360px;
+  width: 320px;
+  margin: 30px auto 0rpx;
+}
+.container .title{
+  position: relative;
+  margin: 40rpx 60rpx;
+  color: #999;
+  border-bottom: 1rpx solid #ebebeb;
+}
+.container .title p{
+  position: absolute;
+  width: 160rpx;
+  background: #fff;
+  top: -12rpx;
+  left: 50%;
+  margin-left: -80rpx;
+  font-size: 28rpx;
+}
+.type-group {
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+}
+.type-group .flex-item{
+  display: flex;
+  height: 120rpx;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.type-group .flex-item image{
+  height: 50rpx;
+  width: 50rpx;
+  flex-shrink: 0;
+  margin: 0 12rpx;
+  padding: 10rpx;
+  border-radius: 50%;
+  background: #ccc;
+}
+.type-group .flex-item .active{
+  background: #07b4c4;
+}
+.type-group .flex-item .text-active{
+  color: #07b4c4;
+}
+.type-group .flex-item text{
+  width: 120rpx;
+  font-size: 20rpx;
+  color: #999;
+  margin-top: 4rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.tab-bar{
+  position: fixed;
+  bottom: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-around;
+  flex-direction:row;
+  font-size: 20rpx;
+  background: #121622;
+}
+.tab-bar image{
+  height: 40rpx;
+  width: 40rpx;
+}
+.tab-bar .flex-item{
+  display: flex;
+  height: 100rpx;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.tab-bar .flex-item text{
+  width: 120rpx;
+  color: #999;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
